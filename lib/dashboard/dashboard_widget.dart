@@ -6136,7 +6136,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                   ),
                                                   child: const FlutterFlowPdfViewer(
                                                     networkPath:
-                                                        'https://firebasestorage.googleapis.com/v0/b/industry-poc-qbh046.appspot.com/o/Boston%20Common%20-%20Wikipedia.pdf?alt=media&token=1e99befc-dd9c-4eb6-a59f-3764efbc795d',
+                                                        'https://storage.googleapis.com/tour-guide-p-o-c-pm6sgs.appspot.com/Tours/Boston_Public_Garden.pdf',
                                                     horizontalScroll: false,
                                                   ),
                                                 ),
