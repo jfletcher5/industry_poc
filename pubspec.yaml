@@ -51,6 +51,7 @@ dependencies:
   google_sign_in_ios: 5.7.6
   google_sign_in_platform_interface: 2.4.2
   google_sign_in_web: 0.12.1
+  internet_file: 1.2.0
   intl: 0.19.0
   json_path: 0.7.2
   page_transition: 2.1.0
@@ -58,6 +59,7 @@ dependencies:
   path_provider_android: 2.2.5
   path_provider_foundation: 2.4.0
   path_provider_platform_interface: 2.1.2
+  pdfx: 2.6.0
   percent_indicator: 4.2.2
   plugin_platform_interface: 2.1.8
   provider: 6.1.2
@@ -84,6 +86,7 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dependency_overrides:
+  device_info_plus: 10.1.0
   http: 1.2.1
   uuid: ^4.0.0
 
