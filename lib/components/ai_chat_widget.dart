@@ -449,34 +449,10 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
                                   ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
                           contentPadding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 24.0, 70.0, 24.0),
                         ),
@@ -514,16 +490,6 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                 ),
               ),
             ),
-            if (responsiveVisibility(
-              context: context,
-              phone: false,
-              tablet: false,
-            ))
-              Container(
-                width: 100.0,
-                height: 60.0,
-                decoration: const BoxDecoration(),
-              ),
           ],
         ),
       ),

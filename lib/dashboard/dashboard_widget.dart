@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/components/ai_chat_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -6014,7 +6015,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
-                                                'Find out everything you need to know below!',
+                                                'Below is a company overview',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -6095,10 +6096,56 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                 flex: 9,
                                 child: Container(
                                   decoration: const BoxDecoration(),
-                                  child: wrapWithModel(
-                                    model: _model.aiChatModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: const AiChatWidget(),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Flexible(
+                                        flex: 1,
+                                        child: wrapWithModel(
+                                          model: _model.aiChatModel,
+                                          updateCallback: () => setState(() {}),
+                                          child: const AiChatWidget(),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        flex: 2,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Flexible(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 36.0, 12.0, 0.0),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                    ),
+                                                  ),
+                                                  child: const FlutterFlowPdfViewer(
+                                                    networkPath:
+                                                        'https://firebasestorage.googleapis.com/v0/b/industry-poc-qbh046.appspot.com/o/Boston%20Common%20-%20Wikipedia.pdf?alt=media&token=1e99befc-dd9c-4eb6-a59f-3764efbc795d',
+                                                    horizontalScroll: false,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
