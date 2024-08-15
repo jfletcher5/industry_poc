@@ -11,14 +11,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start chatservices Group Code
 
 class ChatservicesGroup {
-  static String getBaseUrl({
-    String? conversationId = '',
-    String? userID = '',
-    String? tourID = '',
-    int? speaker = -1,
-    String? message = 'default message',
-  }) =>
-      'https://tour-guide-poc.uk.r.appspot.com/';
+  static String getBaseUrl() => 'https://tour-guide-poc.uk.r.appspot.com/';
   static Map<String, String> headers = {
     'Content-Type': 'application/json',
     'accept': 'application/json',
@@ -29,19 +22,10 @@ class ChatservicesGroup {
 
 class GetConversationCall {
   Future<ApiCallResponse> call({
-    String? conversationId = '',
-    String? userID = '',
-    String? tourID = '',
+    String? conversationId = 'industry',
     int? speaker = -1,
-    String? message = 'default message',
   }) async {
-    final baseUrl = ChatservicesGroup.getBaseUrl(
-      conversationId: conversationId,
-      userID: userID,
-      tourID: tourID,
-      speaker: speaker,
-      message: message,
-    );
+    final baseUrl = ChatservicesGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
       callName: 'getConversation',
@@ -67,19 +51,13 @@ class GetConversationCall {
 
 class AddMessageCall {
   Future<ApiCallResponse> call({
-    String? conversationId = '',
-    String? userID = '',
-    String? tourID = '',
-    int? speaker = -1,
-    String? message = 'default message',
+    String? conversationId = 'industry',
+    String? conversationName = 'industry',
+    String? tourID = '8d1b70cd-e287-43a1-82e1-55646d7f7d3c',
+    String? newMessage = 'default message',
+    String? userID = 'industry',
   }) async {
-    final baseUrl = ChatservicesGroup.getBaseUrl(
-      conversationId: conversationId,
-      userID: userID,
-      tourID: tourID,
-      speaker: speaker,
-      message: message,
-    );
+    final baseUrl = ChatservicesGroup.getBaseUrl();
 
     final ffApiRequestBody = '''
 {
@@ -88,7 +66,7 @@ class AddMessageCall {
   "tourID": "$tourID",
   "tourName": "",
   "userID": "$userID",
-  "message": "$message"
+  "message": "$newMessage"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addMessage',

@@ -498,8 +498,8 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                             conversationId: 'industry',
                             userID: 'industry',
                             tourID: '8d1b70cd-e287-43a1-82e1-55646d7f7d3c',
-                            speaker: -1,
-                            message: _model.textController.text,
+                            conversationName: 'industry',
+                            newMessage: _model.textController.text,
                           );
 
                           if ((_model.apiResult7ke?.succeeded ?? true)) {
