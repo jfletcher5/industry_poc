@@ -31,4 +31,33 @@ class FFAppState extends ChangeNotifier {
   set contentViewSelected(String value) {
     _contentViewSelected = value;
   }
+
+  List<dynamic> _appConversationJSONList = [];
+  List<dynamic> get appConversationJSONList => _appConversationJSONList;
+  set appConversationJSONList(List<dynamic> value) {
+    _appConversationJSONList = value;
+  }
+
+  void addToAppConversationJSONList(dynamic value) {
+    appConversationJSONList.add(value);
+  }
+
+  void removeFromAppConversationJSONList(dynamic value) {
+    appConversationJSONList.remove(value);
+  }
+
+  void removeAtIndexFromAppConversationJSONList(int index) {
+    appConversationJSONList.removeAt(index);
+  }
+
+  void updateAppConversationJSONListAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    appConversationJSONList[index] = updateFn(_appConversationJSONList[index]);
+  }
+
+  void insertAtIndexInAppConversationJSONList(int index, dynamic value) {
+    appConversationJSONList.insert(index, value);
+  }
 }
