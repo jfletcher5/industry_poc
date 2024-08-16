@@ -522,13 +522,6 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                           );
 
                           if ((_model.apiResult7ke?.succeeded ?? true)) {
-                            FFAppState().taskListJSONList = <String, String?>{
-                              'taskDescription': getJsonField(
-                                (_model.apiResult7ke?.jsonBody ?? ''),
-                                r'''$[-1].content''',
-                              ).toString(),
-                            }.toList().cast<dynamic>();
-                            setState(() {});
                             await showDialog(
                               context: context,
                               builder: (alertDialogContext) {
