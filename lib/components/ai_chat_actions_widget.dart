@@ -1,11 +1,9 @@
-import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'ai_chat_actions_model.dart';
 export 'ai_chat_actions_model.dart';
@@ -30,19 +28,6 @@ class _AiChatActionsWidgetState extends State<AiChatActionsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AiChatActionsModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultgj4 = await ChatservicesGroup.getConversationCall.call(
-        conversationId: 'industry',
-      );
-
-      if ((_model.apiResultgj4?.succeeded ?? true)) {
-        FFAppState().appConversationJSONList =
-            (_model.apiResultgj4?.jsonBody ?? '').toList().cast<dynamic>();
-        setState(() {});
-      }
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -117,8 +102,8 @@ class _AiChatActionsWidgetState extends State<AiChatActionsWidget> {
                                           const AlignmentDirectional(0.0, -1.0),
                                       child: Builder(
                                         builder: (context) {
-                                          final chat = FFAppState()
-                                              .appConversationJSONList
+                                          final actions = FFAppState()
+                                              .taskListJSONList
                                               .toList();
 
                                           return ListView.builder(
@@ -130,9 +115,11 @@ class _AiChatActionsWidgetState extends State<AiChatActionsWidget> {
                                             ),
                                             primary: false,
                                             scrollDirection: Axis.vertical,
-                                            itemCount: chat.length,
-                                            itemBuilder: (context, chatIndex) {
-                                              final chatItem = chat[chatIndex];
+                                            itemCount: actions.length,
+                                            itemBuilder:
+                                                (context, actionsIndex) {
+                                              final actionsItem =
+                                                  actions[actionsIndex];
                                               return Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -145,7 +132,7 @@ class _AiChatActionsWidgetState extends State<AiChatActionsWidget> {
                                                   children: [
                                                     if ((int index) {
                                                       return index % 2 != 0;
-                                                    }(chatIndex))
+                                                    }(actionsIndex))
                                                       Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -226,7 +213,7 @@ class _AiChatActionsWidgetState extends State<AiChatActionsWidget> {
                                                                           SelectionArea(
                                                                               child: AutoSizeText(
                                                                             getJsonField(
-                                                                              chatItem,
+                                                                              actionsItem,
                                                                               r'''$['content']''',
                                                                             ).toString(),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
