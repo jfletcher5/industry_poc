@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -523,18 +522,6 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                           );
 
                           if ((_model.apiResult7ke?.succeeded ?? true)) {
-                            FFAppState().appConversationJSONList =
-                                (_model.apiResult7ke?.jsonBody ?? '')
-                                    .toList()
-                                    .cast<dynamic>();
-                            setState(() {});
-                            await actions.addToList(
-                              getJsonField(
-                                (_model.apiResult7ke?.jsonBody ?? ''),
-                                r'''$[-1].content''',
-                              ).toString(),
-                              FFAppState().taskListJSONList.toList(),
-                            );
                             FFAppState().taskListJSONList = <String, String?>{
                               'taskDescription': getJsonField(
                                 (_model.apiResult7ke?.jsonBody ?? ''),
