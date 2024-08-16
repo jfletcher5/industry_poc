@@ -214,7 +214,7 @@ class _AiChatActionsWidgetState extends State<AiChatActionsWidget> {
                                                                               child: AutoSizeText(
                                                                             getJsonField(
                                                                               actionsItem,
-                                                                              r'''$['content']''',
+                                                                              r'''$['taskDescription']''',
                                                                             ).toString(),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Inter',
@@ -315,9 +315,11 @@ class _AiChatActionsWidgetState extends State<AiChatActionsWidget> {
                                                                               24.0,
                                                                         ),
                                                                         onPressed:
-                                                                            () {
-                                                                          print(
-                                                                              'IconButton pressed ...');
+                                                                            () async {
+                                                                          FFAppState()
+                                                                              .removeAtIndexFromTaskListJSONList(actionsIndex);
+                                                                          setState(
+                                                                              () {});
                                                                         },
                                                                       ),
                                                                     ),

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -527,6 +528,39 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                                     .toList()
                                     .cast<dynamic>();
                             setState(() {});
+                            await actions.addToList(
+                              getJsonField(
+                                (_model.apiResult7ke?.jsonBody ?? ''),
+                                r'''$[-1].content''',
+                              ).toString(),
+                              FFAppState().taskListJSONList.toList(),
+                            );
+                            FFAppState().taskListJSONList = <String, String?>{
+                              'taskDescription': getJsonField(
+                                (_model.apiResult7ke?.jsonBody ?? ''),
+                                r'''$[-1].content''',
+                              ).toString(),
+                            }.toList().cast<dynamic>();
+                            setState(() {});
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: const Text('test'),
+                                  content: Text(getJsonField(
+                                    (_model.apiResult7ke?.jsonBody ?? ''),
+                                    r'''$[-1].content''',
+                                  ).toString()),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                             setState(() {
                               _model.textController?.clear();
                             });
