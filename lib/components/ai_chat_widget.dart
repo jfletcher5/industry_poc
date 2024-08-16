@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'ai_chat_model.dart';
 export 'ai_chat_model.dart';
@@ -259,40 +260,58 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                                                                           0.0,
                                                                           0.0),
                                                                       child:
-                                                                          Container(
-                                                                        decoration:
-                                                                            const BoxDecoration(),
+                                                                          InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await Clipboard.setData(ClipboardData(
+                                                                              text: getJsonField(
+                                                                            chatItem,
+                                                                            r'''$['content']''',
+                                                                          ).toString()));
+                                                                        },
                                                                         child:
-                                                                            Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              4.0,
-                                                                              12.0,
-                                                                              4.0),
+                                                                            Container(
+                                                                          decoration:
+                                                                              const BoxDecoration(),
                                                                           child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
                                                                               Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                                child: Icon(
-                                                                                  Icons.content_copy,
-                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                  size: 12.0,
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                4.0,
+                                                                                12.0,
+                                                                                4.0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                Padding(
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                                  child: Icon(
+                                                                                    Icons.content_copy,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    size: 12.0,
+                                                                                  ),
                                                                                 ),
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                                                                                child: Text(
-                                                                                  'Copy response',
-                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                        fontFamily: 'Inter',
-                                                                                        letterSpacing: 0.0,
-                                                                                      ),
+                                                                                Padding(
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                                  child: Text(
+                                                                                    'Copy response',
+                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                          fontFamily: 'Inter',
+                                                                                          letterSpacing: 0.0,
+                                                                                        ),
+                                                                                  ),
                                                                                 ),
-                                                                              ),
-                                                                            ],
+                                                                              ],
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ),

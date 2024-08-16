@@ -90,6 +90,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/dashboard',
           requireAuth: true,
           builder: (context, params) => const DashboardWidget(),
+        ),
+        FFRoute(
+          name: 'Dashboardv2',
+          path: '/dashboardv2',
+          requireAuth: true,
+          builder: (context, params) => const Dashboardv2Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

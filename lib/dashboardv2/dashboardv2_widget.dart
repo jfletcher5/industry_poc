@@ -1,8 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/ai_chat_actions_widget.dart';
 import '/components/ai_chat_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,19 +10,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'dashboard_model.dart';
-export 'dashboard_model.dart';
+import 'dashboardv2_model.dart';
+export 'dashboardv2_model.dart';
 
-class DashboardWidget extends StatefulWidget {
-  const DashboardWidget({super.key});
+class Dashboardv2Widget extends StatefulWidget {
+  const Dashboardv2Widget({super.key});
 
   @override
-  State<DashboardWidget> createState() => _DashboardWidgetState();
+  State<Dashboardv2Widget> createState() => _Dashboardv2WidgetState();
 }
 
-class _DashboardWidgetState extends State<DashboardWidget>
+class _Dashboardv2WidgetState extends State<Dashboardv2Widget>
     with TickerProviderStateMixin {
-  late DashboardModel _model;
+  late Dashboardv2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -31,7 +31,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DashboardModel());
+    _model = createModel(context, () => Dashboardv2Model());
 
     animationsMap.addAll({
       'progressBarOnPageLoadAnimation1': AnimationInfo(
@@ -823,29 +823,20 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed('Dashboardv2');
-                                            },
-                                            child: Container(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              decoration: BoxDecoration(
+                                          Container(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
-                                                ),
+                                                        .primary,
+                                                width: 2.0,
                                               ),
                                             ),
                                           ),
@@ -4591,42 +4582,12 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                           child: const AiChatWidget(),
                                         ),
                                       ),
-                                      Flexible(
-                                        flex: 3,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Flexible(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 36.0, 12.0, 12.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                    ),
-                                                  ),
-                                                  child: const FlutterFlowPdfViewer(
-                                                    networkPath:
-                                                        'https://storage.googleapis.com/tour-guide-p-o-c-pm6sgs.appspot.com/Tours/Boston_Public_Garden.pdf',
-                                                    horizontalScroll: false,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                      Expanded(
+                                        flex: 1,
+                                        child: wrapWithModel(
+                                          model: _model.aiChatActionsModel,
+                                          updateCallback: () => setState(() {}),
+                                          child: const AiChatActionsWidget(),
                                         ),
                                       ),
                                     ],

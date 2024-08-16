@@ -60,4 +60,33 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInAppConversationJSONList(int index, dynamic value) {
     appConversationJSONList.insert(index, value);
   }
+
+  List<dynamic> _taskListJSONList = [];
+  List<dynamic> get taskListJSONList => _taskListJSONList;
+  set taskListJSONList(List<dynamic> value) {
+    _taskListJSONList = value;
+  }
+
+  void addToTaskListJSONList(dynamic value) {
+    taskListJSONList.add(value);
+  }
+
+  void removeFromTaskListJSONList(dynamic value) {
+    taskListJSONList.remove(value);
+  }
+
+  void removeAtIndexFromTaskListJSONList(int index) {
+    taskListJSONList.removeAt(index);
+  }
+
+  void updateTaskListJSONListAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    taskListJSONList[index] = updateFn(_taskListJSONList[index]);
+  }
+
+  void insertAtIndexInTaskListJSONList(int index, dynamic value) {
+    taskListJSONList.insert(index, value);
+  }
 }
