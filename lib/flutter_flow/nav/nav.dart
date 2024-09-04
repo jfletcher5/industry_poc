@@ -72,13 +72,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
+          appStateNotifier.loggedIn ? const AppWidget() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
+              appStateNotifier.loggedIn ? const AppWidget() : const LoginWidget(),
         ),
         FFRoute(
           name: 'Login',
@@ -86,16 +86,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
-          name: 'Dashboard',
-          path: '/dashboard',
+          name: 'app',
+          path: '/app',
           requireAuth: true,
-          builder: (context, params) => const DashboardWidget(),
-        ),
-        FFRoute(
-          name: 'Dashboardv2',
-          path: '/dashboardv2',
-          requireAuth: true,
-          builder: (context, params) => const Dashboardv2Widget(),
+          builder: (context, params) => const AppWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -282,8 +276,8 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Center(
                   child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
+                    width: 50,
+                    height: 50,
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(
                         FlutterFlowTheme.of(context).primary,

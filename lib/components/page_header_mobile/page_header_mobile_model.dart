@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'ai_chat_actions_widget.dart' show AiChatActionsWidget;
+import 'page_header_mobile_widget.dart' show PageHeaderMobileWidget;
 import 'package:flutter/material.dart';
 
-class AiChatActionsModel extends FlutterFlowModel<AiChatActionsWidget> {
+class PageHeaderMobileModel extends FlutterFlowModel<PageHeaderMobileWidget> {
   @override
   void initState(BuildContext context) {}
 
